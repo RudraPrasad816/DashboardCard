@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaList } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa6";
 import { Box, Stack } from "@mui/system";
@@ -23,7 +23,19 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme, bg }) => ({
 
 const DashCard = () => {
 
-    const [listView, setListView] = useState(false);
+    const [windowSize, setWindowSize] = useState(window.innerWidth);
+    const [listView, setListView] = useState( false );
+
+    useEffect(()=>{
+        const HandleWindowResize = () => {
+            setWindowSize(window.innerWidth);
+        }
+        window.addEventListener("resize", HandleWindowResize);
+
+        if(windowSize < 526){
+            setListView(false);
+        }
+    })
 
     function handleListView() {
         setListView(true)
@@ -210,7 +222,7 @@ const DashCard = () => {
                     <Stack
                         sx={{
                             alignSelf: { xs: "flex-end" },
-                            '@media(max-width: 426px)':{display: "none"}
+                            '@media(max-width: 526px)':{display: "none"}
                         }}
                         spacing="10px"
                         direction="row">
@@ -339,6 +351,7 @@ const DashCard = () => {
                         <Box
                             sx={{
                                 width: listView ? "50%" : "100%",
+                                '@media(max-width:600px)':{width: listView ? "40%" : "100%"}
                             }}>
                             <Typography
                                 variant="p"
@@ -367,7 +380,7 @@ const DashCard = () => {
                                 60%
                             </Typography>
                         </Box>
-                        <Divider />
+                        <Divider sx={{width: listView ? "none" : "100%"}} />
                         <Stack
                             sx={{
                                 padding: "12px 0",
@@ -506,6 +519,7 @@ const DashCard = () => {
                         <Box
                             sx={{
                                 width: listView ? "50%" : "100%",
+                                '@media(max-width:600px)':{width: listView ? "40%" : "100%"}
                             }}>
                             <Typography
                                 variant="p"
@@ -534,7 +548,7 @@ const DashCard = () => {
                                 50%
                             </Typography>
                         </Box>
-                        <Divider />
+                        <Divider sx={{width: listView ? "none" : "100%"}} />
                         <Stack
                             sx={{
                                 padding: "12px 0",
@@ -673,6 +687,7 @@ const DashCard = () => {
                         <Box
                             sx={{
                                 width: listView ? "50%" : "100%",
+                                '@media(max-width:600px)':{width: listView ? "40%" : "100%"}
                             }}>
                             <Typography
                                 variant="p"
@@ -701,7 +716,7 @@ const DashCard = () => {
                                 80%
                             </Typography>
                         </Box>
-                        <Divider />
+                        <Divider sx={{width: listView ? "none" : "100%"}} />
                         <Stack
                             sx={{
                                 padding: "12px 0",
@@ -840,6 +855,7 @@ const DashCard = () => {
                         <Box
                             sx={{
                                 width: listView ? "50%" : "100%",
+                                '@media(max-width:600px)':{width: listView ? "40%" : "100%"}
                             }}>
                             <Typography
                                 variant="p"
@@ -868,7 +884,7 @@ const DashCard = () => {
                                 20%
                             </Typography>
                         </Box>
-                        <Divider />
+                        <Divider sx={{width: listView ? "none" : "100%"}} />
                         <Stack
                             sx={{
                                 padding: "12px 0",
@@ -1007,6 +1023,7 @@ const DashCard = () => {
                         <Box
                             sx={{
                                 width: listView ? "50%" : "100%",
+                                '@media(max-width:600px)':{width: listView ? "40%" : "100%"}
                             }}>
                             <Typography
                                 variant="p"
@@ -1035,7 +1052,7 @@ const DashCard = () => {
                                 60%
                             </Typography>
                         </Box>
-                        <Divider />
+                        <Divider sx={{width: listView ? "none" : "100%"}} />
                         <Stack
                             sx={{
                                 padding: "12px 0",
@@ -1174,6 +1191,7 @@ const DashCard = () => {
                         <Box
                             sx={{
                                 width: listView ? "50%" : "100%",
+                                '@media(max-width:600px)':{width: listView ? "40%" : "100%"}
                             }}>
                             <Typography
                                 variant="p"
@@ -1202,7 +1220,7 @@ const DashCard = () => {
                                 40%
                             </Typography>
                         </Box>
-                        <Divider />
+                        <Divider sx={{width: listView ? "none" : "100%"}} />
                         <Stack
                             sx={{
                                 padding: "12px 0",
